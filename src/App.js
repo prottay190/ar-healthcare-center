@@ -4,13 +4,43 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './pages/Shared/Header/Header';
 import Footer from './pages/Shared/Footer/Footer';
 import Home from './pages/Home/Home/Home';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import NotFound from './pages/NotFound/NotFound';
+import Login from './pages/Login/Login/Login';
+import AuthProvider from './context/AuthProvider';
+import ServiceDetails from './pages/ServiceDetails/ServiceId/ServiceDetails';
+
 
 function App() {
   return (
     <div className="App">
-     <Header></Header>
-     <Home></Home>
-     <Footer></Footer>
+     <AuthProvider>
+     <Router>
+      <Route>
+        <Header></Header>
+      </Route>
+      <Switch>
+         <Route exact path="/">
+           <Home></Home>
+         </Route>
+         <Route path='/home'>
+           <Home></Home>
+         </Route>
+         <Route path="/login">
+            <Login></Login>
+         </Route>
+         <Route>
+         <Route path="/serviceDetails/:serviceDescription">
+                   <ServiceDetails></ServiceDetails>
+          </Route>
+         </Route>
+         <Route path="*">
+           <NotFound></NotFound>
+         </Route>
+      </Switch>
+      <Footer></Footer>
+    </Router>
+     </AuthProvider>
     </div>
   );
 }

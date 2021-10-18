@@ -1,9 +1,12 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Button, Nav, Navbar } from 'react-bootstrap';
 import './Header.css';
 import { FaSeedling } from 'react-icons/fa';
+import useAuth from '../../../hooks/useAuth';
+
 
 const Header = () => {
+    const {user, logOut} = useAuth();
     return (
         <>
         <Navbar className="header p-4" bg="light" variant="light" sticky='top' collapseOnSelect expand="lg">
@@ -11,12 +14,13 @@ const Header = () => {
             <Navbar.Brand className="nav-title" href="#home"><FaSeedling /> <span className="text-dark">AR</span> HealthCare Center</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Service</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/home#service">Service</Nav.Link>
+            <Nav.Link href="/login">LogIn</Nav.Link>
             <Nav.Link href="#pricing">Pricin</Nav.Link>
+            
             <Navbar.Text>
-                Signed in as: <a href="#login">Mark Ott</a>
+                Signed in as: <a href="#login"></a>
             </Navbar.Text>
             </Navbar.Collapse>
         </Container>

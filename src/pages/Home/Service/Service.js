@@ -2,9 +2,10 @@ import React from 'react';
 import { Card, CardGroup, Col } from 'react-bootstrap';
 import './Service.css';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Service = ({service}) => {
-    const {name, img, description} = service;
+    const {id, name, img, description} = service;
     return (
         <div>
             <Col>
@@ -15,7 +16,7 @@ const Service = ({service}) => {
             <Card.Text>
                 <h3>Name: {name}</h3>
                 <p>Description: {description}</p>
-                <button className="btn btn-warning"><FaArrowAltCircleRight /> Show Details</button>
+           <Link to={`/serviceDetails/${description}`}><button className="btn btn-warning"><FaArrowAltCircleRight /> Show Details</button></Link>
             </Card.Text>
             </Card.Body>
             </Card>
