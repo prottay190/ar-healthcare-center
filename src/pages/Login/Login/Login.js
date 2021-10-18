@@ -1,5 +1,6 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
+import { FaGoogle } from 'react-icons/fa';
 
 
 const Login = () => {
@@ -7,7 +8,7 @@ const Login = () => {
     return (
         <div>
             <h2>Please LogIn</h2>
-            <button onClick={singInUsingGoogle} className="btn btn-warning">Google SingIn</button>
+            <button onClick={singInUsingGoogle} className="btn btn-warning"><FaGoogle />  Google SingIn</button>
         </div>
     );
 };
