@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer">
             <Container>
                 <Row>
-                   <Col lg={4}>
+                   <Col lg={4} md={6} sm={12}>
                        <h3>Hospital</h3>
                        <p className="footer-text">A hospital is a health care institution providing patient treatment with specialized medical and nursing staff and medical equipment.</p>
 
@@ -19,7 +19,7 @@ const Footer = () => {
                        <p className="footer-text"><small>Chorpara Road, Mymensingh</small><br />
                        <small>Dhaka,Bangladesh.</small></p>
                    </Col>
-                   <Col lg={4}>
+                   <Col lg={4} md={6} sm={12}>
                        <h3>Latest Update</h3>
                        <div className="footer-text">
                            <h6><FaElementor /> Together We Can Do So Much</h6>
@@ -34,7 +34,7 @@ const Footer = () => {
                            <p>18 OCT 2021</p>
                        </div>
                    </Col>
-                   <Col lg={4}>
+                   <Col lg={4} md={6} sm={12}>
                        <h3>Contact</h3>
                        <div className="footer-text">
                            <p>Our HotLIne: heaalth.care@hotmail.com</p>
