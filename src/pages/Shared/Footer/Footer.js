@@ -5,7 +5,7 @@ import { FaElementor, FaPhoneSquareAlt, FaMobile } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <div className="footer p-5">
             <Container>
                 <Row>
                    <Col lg={4} md={6} sm={12}>

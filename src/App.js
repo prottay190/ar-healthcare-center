@@ -9,6 +9,8 @@ import NotFound from './pages/NotFound/NotFound';
 import Login from './pages/Login/Login/Login';
 import AuthProvider from './context/AuthProvider';
 import ServiceDetails from './pages/ServiceDetails/ServiceId/ServiceDetails';
+import Register from './pages/Register/Register';
+import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 
 
 function App() {
@@ -29,10 +31,13 @@ function App() {
          <Route path="/login">
             <Login></Login>
          </Route>
+         <Route path="/register">
+           <Register></Register>
+         </Route>
          <Route>
-         <Route path="/serviceDetails/:serviceDescription">
-                   <ServiceDetails></ServiceDetails>
-          </Route>
+         <PrivateRoute path="/serviceDetails/:serviceDescription">
+            <ServiceDetails></ServiceDetails>
+          </PrivateRoute>
          </Route>
          <Route path="*">
            <NotFound></NotFound>
