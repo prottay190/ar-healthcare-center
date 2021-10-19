@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const Login = () => {
-     const {singInUsingGoogle, handleEmail, handlePassword, handleResetpassword, toggoleLogin } = useAuth();
+     const {singInUsingGoogle, handleEmail, handlePassword, handleResetpassword, toggoleLogin, singInUsingGithub } = useAuth();
     return (
         <div>
          <div id="/login" className="from-container p-5 mt-2">
@@ -32,6 +32,7 @@ const Login = () => {
                 <p className="text-light">new to AR HealthCare Center? <Link to="/register">Create Account</Link></p>
                 <div className="text-light m-3">------------------------------OR-----------------------------</div>
                 <button onClick={singInUsingGoogle} className="btn btn-warning"><FaGoogle />  Google SingIn</button>
+                
             </div>
         </div>
     );

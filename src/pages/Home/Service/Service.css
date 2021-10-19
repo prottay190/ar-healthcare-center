@@ -4,4 +4,8 @@
     border-radius: 20px;
     margin: auto;
     padding: 10px;
+    transition: .2s;
+}
+.service-img:hover{
+    transform: scale(.5);
 }
