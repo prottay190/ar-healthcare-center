@@ -11,6 +11,7 @@ import AuthProvider from './context/AuthProvider';
 import ServiceDetails from './pages/ServiceDetails/ServiceId/ServiceDetails';
 import Register from './pages/Register/Register';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
+import BookAppointment from './pages/BookAppointment/BookAppointment';
 
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
          <PrivateRoute path="/serviceDetails/:serviceDescription">
             <ServiceDetails></ServiceDetails>
           </PrivateRoute>
+          <Route path="/bookappointment">
+           <BookAppointment></BookAppointment>
+          </Route>
          </Route>
          <Route path="*">
            <NotFound></NotFound>

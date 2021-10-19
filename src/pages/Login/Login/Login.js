@@ -9,9 +9,9 @@ const Login = () => {
      const {singInUsingGoogle, handleEmail, handlePassword, handleResetpassword, toggoleLogin } = useAuth();
     return (
         <div>
-         <div className="from-container p-5 mt-2">
-                <h2 className="text-light">Create Account</h2>
-                <Form >
+         <div id="/login" className="from-container p-5 mt-2">
+                <h2 className="text-light">Create Account</h2> 
+                 <Form >
                     <Row>
                         <Col>
                         <Form.Control onBlur={handleEmail} type="email" placeholder="Type your Email" />               

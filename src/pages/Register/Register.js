@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Row, Col,FloatingLabel } from 'react-bootstrap';
+import { Form, Button, Row, Col, FloatingLabel} from 'react-bootstrap';
 import './Register.css';
 import { FaGoogle } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';

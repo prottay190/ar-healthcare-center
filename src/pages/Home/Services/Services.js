@@ -12,7 +12,7 @@ const Services = () => {
 
     },[])
     return (
-        <div className="services-section">
+        <div id="services" className="services-section">
             <h2>Our Services</h2>
             <div className="single-service">
                  <Row lg={3} md={2} sm={1}>
