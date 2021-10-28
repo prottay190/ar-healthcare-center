@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Form, Button, Row, Col, FloatingLabel} from 'react-bootstrap';
 import './Register.css';
 import { FaGoogle } from 'react-icons/fa';
@@ -6,7 +6,40 @@ import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
-    const {singInUsingGoogle, handleRegistion, handleEmail, handlePassword, handleResetpassword} = useAuth();
+    const {singInUsingGoogle,  createAccountWithGoogle, user} = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, SetPassword] = useState('');
+    const [name, setName] =useState('');
+
+    const handleRegistion = e =>{
+        e.preventDefault();
+        createAccountWithGoogle(email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+          });
+    }
+    const handleGEtName = e => {
+        console.log(e.target.value)
+        setName(e.target.value)
+    }
+    const handleGetEmail = e => {
+        console.log(e.target.value)
+        setEmail(e.target.value)
+    }
+    const handleGetPassword = e => {
+        console.log(e.target.value)
+        SetPassword(e.target.value)
+    }
+
+    //firebase email pass
+   
     
     return (
         <div>
@@ -15,10 +48,11 @@ const Register = () => {
                 <Form onSubmit={handleRegistion}>
                     <Row>
                         <Col>
-                        <Form.Control type="email" onBlur={handleEmail} placeholder="Type your Email" />                 
+                        <input type="text" onBlur={handleGEtName} placeholder="name" />
+                        <Form.Control type="email" onBlur={handleGetEmail} placeholder="Type your Email" />                 
                         <br />
                         <FloatingLabel controlId="floatingPassword" label="Password">
-                        <Form.Control onBlur={handlePassword} type="password" placeholder="Password" />
+                        <Form.Control onBlur={handleGetPassword} type="password" placeholder="Password" />
                         </FloatingLabel>
                         <br />
                         <FloatingLabel controlId="floatingPassword" label="Password">
@@ -27,7 +61,7 @@ const Register = () => {
                         </Col>
                     </Row>
                     <br />
-                    <Button onClick={handleResetpassword} variant="primary" type="submit">
+                    <Button  variant="primary" type="submit">
                         Register
                     </Button>
                 </Form>

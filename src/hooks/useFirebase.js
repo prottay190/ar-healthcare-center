@@ -6,14 +6,9 @@ initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
     const [isLogin, setIsLogin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     
-
     const auth = getAuth();
     
      // google sing in
@@ -51,66 +46,17 @@ const useFirebase = () => {
     }
 
     //email and password
-    const handleRegistion = e =>{
-        e.preventDefault();
+   const createAccountWithGoogle = (email, password) =>{
+       console.log(email,password)
+   return createUserWithEmailAndPassword(auth, email, password);
 
-        if(password.length < 6){
-            setError('password must be at least 6 charecter')
-            return;
-          }
-          if(!/(?=.*[A-Z].*[A-Z])/.test(password)){
-            setError('password must contain 2 upperCase')
-            return;
-          }
-
-        isLogin ? processLogin(email, password) : createNewUser(email, password)
-    }
-
-    const processLogin = (email, password) =>{
-          signInWithEmailAndPassword(auth, email, password)
-          .then(result =>{
-              setUser(result.user)
-                               
-          })
-        
-    }
-
-    const createNewUser = (email, password) =>{
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(result =>{
-            setUser(result.user)
-           
-            
-        })
-      
-    }
-
-    const setUserName =() =>{
-         updateProfile(auth.currentUser, {displayName: name})
-         .then(result =>{ })
-    }
-
-    const verifyEmail = () =>{
-        sendEmailVerification(auth.currentUser)
-        .then( result => {
-          console.log(result)
-        })
-      }
-
-   const handleEmail = e =>{
-       setEmail(e.target.value)
-   }
-    
-   const handlePassword = e =>{
-       setPassword(e.target.value)
    }
 
-   const handleResetpassword =() =>{
-    sendPasswordResetEmail(auth, email) 
-    .then(result => {
+   const logInWithEmailAndPass = (email, password) =>{
+    return signInWithEmailAndPassword(auth, email, password);
+   }
 
-    })
-  }
+
 
   const toggoleLogin = e =>{
     setIsLogin(e.target.checked)
@@ -118,14 +64,11 @@ const useFirebase = () => {
 
     return{
         user,
+        setUser,
         singInUsingGoogle,
+        createAccountWithGoogle,
+        logInWithEmailAndPass,
         logOut,
-        handleRegistion,
-        processLogin,
-        handleEmail,
-        handlePassword,
-        handleResetpassword,
-        verifyEmail ,
         toggoleLogin      
     }
 };

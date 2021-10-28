@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { FaGoogle } from 'react-icons/fa';
 import { Col, Form, Row, Button,FloatingLabel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 
 const Login = () => {
-     const {singInUsingGoogle, handleEmail, handlePassword, handleResetpassword, toggoleLogin, singInUsingGithub } = useAuth();
+     const {singInUsingGoogle, toggoleLogin, logInWithEmailAndPass, user,setUser } = useAuth();
+     const [email, setEmail] = useState('');
+     const [password, setPassword] = useState('');
+
+     //redir
+     const history = useHistory();
+     const location = useLocation()
+
+     const uri = location.state?.form || "/home";
+
+     const handleGetEmail = e =>{
+        //  console.log(e.target.value)
+         setEmail(e.target.value)
+     }
+     const handleGetPass = e =>{
+        //  console.log(e.target.value)
+         setPassword(e.target.value)
+     }
+     const handleLogInemailandPass = (e) =>{
+         e.preventDefault()
+         logInWithEmailAndPass(email, password)
+         .then((result) => {
+            // Signed in 
+            setUser(result.user);
+            history.push(uri)
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
+     }
     return (
         <div>
          <div id="/login" className="from-container p-5 mt-2">
                 <h2 className="text-light">Create Account</h2> 
-                 <Form >
+                 <Form onSubmit={handleLogInemailandPass}>
                     <Row>
                         <Col>
-                        <Form.Control onBlur={handleEmail} type="email" placeholder="Type your Email" />               
+                        <Form.Control onBlur={handleGetEmail} type="email" placeholder="Type your Email" />               
                         <br />
                     <FloatingLabel controlId="floatingPassword" label="Password">
-                        <Form.Control onBlur={handlePassword} type="password" placeholder="Password" />
+                        <Form.Control onBlur={handleGetPass} type="password" placeholder="Password" />
                     </FloatingLabel>
                         </Col>
                         <Form.Group className="mb-3 text-light" controlId="formBasicCheckbox">
@@ -25,7 +56,7 @@ const Login = () => {
                         </Form.Group>
                     </Row>
                     <br />
-                    <Button onClick={handleResetpassword} variant="primary" type="submit">
+                    <Button  variant="primary" type="submit">
                         LogIn
                     </Button>
                 </Form>
