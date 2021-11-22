@@ -17,39 +17,39 @@ import BookAppointment from './pages/BookAppointment/BookAppointment';
 function App() {
   return (
     <div className="App">
-     <AuthProvider>
-     <Router>
-      <Route>
-        <Header></Header>
-      </Route>
-      <Switch>
-         <Route exact path="/">
-           <Home></Home>
-         </Route>
-         <Route path='/home'>
-           <Home></Home>
-         </Route>
-         <Route path="/login">
-            <Login></Login>
-         </Route>
-         <Route path="/register">
-           <Register></Register>
-         </Route>
-         <Route>
-         <PrivateRoute path="/serviceDetails/:serviceDescription">
-            <ServiceDetails></ServiceDetails>
-          </PrivateRoute>
-          <Route path="/bookappointment">
-           <BookAppointment></BookAppointment>
+      <AuthProvider>
+        <Router>
+          <Route>
+            <Header></Header>
           </Route>
-         </Route>
-         <Route path="*">
-           <NotFound></NotFound>
-         </Route>
-      </Switch>
-      <Footer></Footer>
-    </Router>
-     </AuthProvider>
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path='/home'>
+              <Home></Home>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
+            </Route>
+            <Route>
+              <PrivateRoute path="/serviceDetails/:serviceDescription">
+                <ServiceDetails></ServiceDetails>
+              </PrivateRoute>
+              <Route path="/bookappointment">
+                <BookAppointment></BookAppointment>
+              </Route>
+            </Route>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+          <Footer></Footer>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
