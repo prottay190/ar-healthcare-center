@@ -4,6 +4,9 @@
 *  It is a HealthCare Reletade Website
 *  6 page in this projects.
    *  Here is a logIn page 
+   *  Created font-end application with dynamic products, Client  side deployment etc. 
+   *  Responsive application, React bootstrap , Firebase login , Private Route etc.
+   *  React, React router dom, React router hash link, React icons etc.
    *  You must LogIn to use This WebSite Properly.
    *  2 Way to To LOg in.
    *  Google SingIn is Easy
